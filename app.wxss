@@ -1,0 +1,8 @@
+@import "./styles/iconfont.wxss";
+page,view,text,swiper-item,image,navigator{
+  padding:0;
+  margin:0;
+}
+page{
+  font-size: 28rpx;
+}
