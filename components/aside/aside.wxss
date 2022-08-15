@@ -1,0 +1,31 @@
+/* components/aside/aside.wxss */
+page{
+  height: 100%;
+}
+.leftaside{
+  flex:2;
+  /* background-color: yellowgreen; */
+  height: 100%;
+  text-align: center;
+  /* padding-bottom: 10px; */
+  display: inline-block;
+
+}
+.leftaside view{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.rightaside{
+  flex: 5;
+  background-color: teal;
+  /* height: 100%; */
+  height:calc(100vh)
+}
+.container{
+  /* height: 100%; */
+  overflow: hidden;
+  display: flex;
+  height:calc(100vh)
+  
+}

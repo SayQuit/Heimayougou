@@ -1,1 +1,27 @@
-<view>首页</view>
+<search></search>
+<swiper autoplay interval="1000" circular indicator-dots indicator-active-color="white">
+  <swiper-item wx:for="{{swiperList}}" wx:for-item="item" wx:for-index="index" wx:key='id'>
+    <navigator>
+      <image src="{{item.image_src}}" mode="aspectFill"></image>
+    </navigator>
+  </swiper-item>
+
+ 
+</swiper>
+
+<view class="nav" >
+  <navigator hover-class="noshadow" wx:for="{{navList}}" wx:for-item="item" wx:for-index="index" wx:key='name'>
+    <image src="{{item.image_src}}" class="navimg"></image>
+  </navigator>
+</view>
+
+<view class="floor"  wx:for="{{floorList}}" wx:for-item="item" wx:for-index="index" wx:key='index'>
+  <view class="floor_title" ><image src="{{item.floor_title.image_src}}" mode="aspectFit"></image></view>
+
+  <view style="display: flex;height: 100%;">
+    <view style="flex: 1;"></view>
+    <view style="flex: 1;"></view>
+    <view style="flex: 1;"></view>
+  </view>
+
+</view>
