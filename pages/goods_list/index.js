@@ -1,4 +1,4 @@
-// pages/goods_list/index.js
+// import {request} from '../../request/request.js'
 Page({
 
   /**
@@ -6,6 +6,12 @@ Page({
    */
   data: {
     goodList:[],
+    param:{
+      query:'',
+      cid:'',
+      pagenum:'',
+      pagesize:''
+    },
     tabs:[
       {
         name:'综合',
@@ -24,9 +30,10 @@ Page({
       }
     ]
   },
-  getgoodList:function(){
+  async getgoodList(){
+    var link='https://api-hmugo-web.itheima.net/api/public/v1/goods/search?cid='+this.data.param.cid;
     wx.request({
-      url: 'https://api-hmugo-web.itheima.net/api/public/v1/goods/search',
+      url: link,
       success:(result)=>{
         // console.log(result.data.message);
         this.setData({
@@ -51,9 +58,24 @@ Page({
     // console.log(this.data.tabs);
   },
   onLoad: function (options) {
-    console.log(options);
+    // console.log(options);
+    var p = 'param.cid'
+      this.setData({
+        [p]: options.cid
+      })
     this.getgoodList();
   },
+  onPullDownRefresh:function(){
+    this.getgoodList();
+    setTimeout(() => {
+      wx.stopPullDownRefresh({
+        success: (res) => {},
+      })
+    }, 500);
+  },
+  onReachBottom:function(){
+
+  }
 
 
 })
