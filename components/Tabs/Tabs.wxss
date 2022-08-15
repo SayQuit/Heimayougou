@@ -1,0 +1,14 @@
+/* pages/goods_list/index.wxss */
+.goodNav{
+  display: flex;
+  margin-top: 20rpx;
+}
+.goodNav>view{
+  flex: 1;
+  text-align: center;
+  padding-bottom: 20rpx;
+}
+.current{
+  border-bottom: 1px solid #eb4450;
+  color: #eb4450;
+}

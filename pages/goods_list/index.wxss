@@ -1,1 +1,15 @@
-/* pages/goods_list/index.wxss */
+.goodsblock{
+  height: 150rpx;
+}
+.desc{
+  position: relative;
+  width: 60%;
+  float: left;
+}
+.desc>text{
+  position: absolute;
+  top: 95%;
+  left: 4%;
+  color: orange;
+  font-size: 28rpx;
+}

@@ -1,0 +1,7 @@
+<!--components/Tabs/Tabs.wxml-->
+<!-- <text>components/Tabs/Tabs.wxml</text> -->
+<view class="goodNav">
+  <view class=''  wx:for="{{tabs}}" wx:for-item="item" wx:for-index="index" wx:key='id' class="{{item.isActive?'current':''}}" bindtap="clickTabs" data-clickId="{{item.id}}">
+  {{item.name}}
+  </view>
+</view>
