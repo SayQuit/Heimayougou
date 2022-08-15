@@ -6,6 +6,8 @@ Page({
    */
   data: {
     goodList:[],
+    size:10,
+    num:0,
     param:{
       query:'',
       cid:'',
@@ -31,13 +33,14 @@ Page({
     ]
   },
   async getgoodList(){
-    var link='https://api-hmugo-web.itheima.net/api/public/v1/goods/search?cid='+this.data.param.cid;
+    var link='https://api-hmugo-web.itheima.net/api/public/v1/goods/search?cid='+this.data.param.cid+'&pagesize='+this.data.size;
     wx.request({
       url: link,
       success:(result)=>{
         // console.log(result.data.message);
         this.setData({
-          goodList:result.data.message
+          goodList:result.data.message,
+          num:result.data.message.total
         })
       }
     })
@@ -74,7 +77,16 @@ Page({
     }, 500);
   },
   onReachBottom:function(){
-
+    var s=this.data.size+10;
+    this.setData({
+      size:s
+    })
+    if(this.data.size>this.data.num+10){
+      wx.showToast({
+        title: '没有下一页数据',
+      })
+    }
+    this.getgoodList()
   }
 
 
