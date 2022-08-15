@@ -15,13 +15,14 @@
   </navigator>
 </view>
 
-<view class="floor"  wx:for="{{floorList}}" wx:for-item="item" wx:for-index="index" wx:key='index'>
+<view class="floor" wx:for="{{floorList}}" wx:for-item="item" wx:for-index="index" wx:key='index'>
   <view class="floor_title" ><image src="{{item.floor_title.image_src}}" mode="aspectFit"></image></view>
 
-  <view style="display: flex;height: 100%;">
-    <view style="flex: 1;"></view>
-    <view style="flex: 1;"></view>
-    <view style="flex: 1;"></view>
+  <view style="height:80%;">
+    <navigator class="floor_list" wx:for="{{item.product_list}}" wx:for-item="item2" wx:for-index="index" wx:key='index'>
+      <image src="{{item2.image_src}}" mode="widthFix"></image>
+    </navigator>
   </view>
+   
 
 </view>

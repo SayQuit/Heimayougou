@@ -1,2 +1,2 @@
 <search></search>
-<aside></aside>
+<aside catList="{{Cats}}" isActive="{{Active}}" right="{{rightAside}}" bindCatesActive="handleCateChange"></aside>

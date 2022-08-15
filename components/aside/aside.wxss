@@ -12,13 +12,13 @@ page{
 
 }
 .leftaside view{
-  margin-top: 10rpx;
+  margin-top: 35rpx;
   margin-bottom: 10rpx;
 }
 
 .rightaside{
   flex: 5;
-  background-color: teal;
+  /* background-color: teal; */
   /* height: 100%; */
   height:calc(100vh)
 }
@@ -28,4 +28,31 @@ page{
   display: flex;
   height:calc(100vh)
   
+}
+.current{
+  color: #eb4450;
+}
+
+.title{
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.block{
+  display: inline-block;
+  width: 24%;
+  height: 120rpx;
+  position: relative;
+}
+.block>.text{
+  width: 100%;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 8px;
+}
+.block>image{
+  height: 60%;
+  width: 100%;
 }

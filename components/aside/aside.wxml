@@ -1,87 +1,17 @@
 <view class="container">
   <scroll-view scroll-y="true" class="leftaside" >
-    <view>电视</view>
-    <view>电脑</view>
-    <view>电冰箱</view>
-    <view>4</view>
-    <view>5</view>
-    <view>6</view>
-    <view>7</view>
-    <view>8</view>
-    <view>9</view>
-    <view>10</view>
-    <view>1</view>
-    <view>2</view>
-    <view>3</view>
-    <view>4</view>
-    <view>5</view>
-    <view>6</view>
-    <view>7</view>
-    <view>8</view>
-    <view>9</view>
-    <view>10</view>
-    <view>1</view>
-    <view>2</view>
-    <view>3</view>
-    <view>4</view>
-    <view>5</view>
-    <view>6</view>
-    <view>7</view>
-    <view>8</view>
-    <view>9</view>
-    <view>10</view>
-    <view>1</view>
-    <view>2</view>
-    <view>3</view>
-    <view>4</view>
-    <view>5</view>
-    <view>6</view>
-    <view>7</view>
-    <view>8</view>
-    <view>9</view>
-    <view>10</view>
+    <view wx:for="{{catList}}" wx:for-item="item" wx:for-index="index" wx:key='id' class="{{index==isActive?'current':''}}" bindtap="cateChange" data-id="{{index}}">
+      {{item.cat_name}}
+    </view>
   </scroll-view>
 
   <scroll-view scroll-y="true" class="rightaside" >
-    <view>电视</view>
-    <view>电脑</view>
-    <view>电冰箱</view>
-    <view>4</view>
-    <view>5</view>
-    <view>6</view>
-    <view>7</view>
-    <view>8</view>
-    <view>9</view>
-    <view>10</view>
-    <view>1</view>
-    <view>2</view>
-    <view>3</view>
-    <view>4</view>
-    <view>5</view>
-    <view>6</view>
-    <view>7</view>
-    <view>8</view>
-    <view>9</view>
-    <view>10</view>
-    <view>1</view>
-    <view>2</view>
-    <view>3</view>
-    <view>4</view>
-    <view>5</view>
-    <view>6</view>
-    <view>7</view>
-    <view>8</view>
-    <view>9</view>
-    <view>10</view>
-    <view>1</view>
-    <view>2</view>
-    <view>3</view>
-    <view>4</view>
-    <view>5</view>
-    <view>6</view>
-    <view>7</view>
-    <view>8</view>
-    <view>9</view>
-    <view>10</view>
+    <view wx:for="{{right}}" wx:for-item="item" wx:for-index="index" wx:key='cat_id' style="margin:50rpx 0">
+      <view class="title">{{item.cat_name}}</view>
+      <navigator wx:for="{{item.children}}" wx:for-item="item2" wx:for-index="index" wx:key='cat_id' class="block">
+        <view class="text">{{item2.cat_name}}</view>
+        <image src="{{item2.cat_icon}}" mode="heightFix"></image>
+      </navigator>
+    </view>
   </scroll-view>
 </view>
