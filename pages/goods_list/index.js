@@ -33,6 +33,7 @@ Page({
     ]
   },
   async getgoodList(){
+    // this.loading();
     var link='https://api-hmugo-web.itheima.net/api/public/v1/goods/search?cid='+this.data.param.cid+'&pagesize='+this.data.size;
     wx.request({
       url: link,
@@ -60,6 +61,15 @@ Page({
       })
     // console.log(this.data.tabs);
   },
+  loading:function(){
+    wx.showLoading({
+      title: '加载中',
+    })
+    
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 300)
+  },
   onLoad: function (options) {
     // console.log(options);
     var p = 'param.cid'
@@ -81,7 +91,7 @@ Page({
     this.setData({
       size:s
     })
-    if(this.data.size>this.data.num+10){
+    if(this.data.size>=this.data.num+10){
       wx.showToast({
         title: '没有下一页数据',
       })

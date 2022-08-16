@@ -1,1 +1,96 @@
-/* pages/goods_detail/index.wxss */
+@import "../../styles/iconfont.wxss";
+.swiperNavigator{
+  width: 100%;
+  height: 90%;
+  /* position: relative; */
+
+}
+.swiperNavigator>image{
+  height: 92.5%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 10rpx 0;
+  border: 10rpx solid grey;
+  /* box-sizing: border-box; */
+}
+.swiper{
+  height: 550rpx;
+}
+.price{
+  margin-left: 40rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  color: #eb4450;
+  font-weight: 800;
+  font-size: 35rpx;
+}
+.desc{
+  display: flex;
+  color:#999;
+  margin-left: 10rpx;
+ 
+  /* box-sizing: border-box; */
+}
+.desc>text{
+  flex: 5;
+  border-right: 1rpx solid #999;
+   padding-right: 70rpx;
+   padding-left: 40rpx;
+   /* font-size: rpx; */
+   word-break:break-all;
+   display:-webkit-box;
+   -webkit-line-clamp:2;
+   -webkit-box-orient:vertical;
+   overflow:hidden;
+}
+.desc>view{
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+}
+.desc>view>view{
+  flex: 1;
+}
+
+.fixBlock{
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  border: 1px solid;
+  z-index: 10;
+  top: 100%;
+  transform: translateY(-100%);
+  background-color: white;
+  display: flex;
+}
+.fixBlock>navigator{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  line-height: 100rpx;
+}
+.fixBlock>navigator>view{
+  flex: 1;
+  line-height: 50rpx;
+  font-size:22rpx;
+}
+.fixBlock>.shoppingCar{
+  flex: 2;
+  background-color: orange;
+  color: white;
+  font-weight:800;
+}
+.fixBlock>.buy{
+  flex: 2;
+  background-color: #eb4450;
+  color: white;
+  font-weight:800;
+}

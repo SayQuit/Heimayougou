@@ -5,8 +5,6 @@
       <image src="{{item.image_src}}" mode="aspectFill"></image>
     </navigator>
   </swiper-item>
-
- 
 </swiper>
 
 <view class="nav" >

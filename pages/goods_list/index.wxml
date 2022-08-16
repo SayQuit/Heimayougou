@@ -5,15 +5,16 @@
 <block wx:if="{{tabs[0].isActive}}">
   <view wx:for="{{goodList.goods}}" wx:for-item="item" wx:for-index="index" wx:key='cat_id' class="goodsblock" style="margin:60rpx 0">
     <view style="width: 40%;float: left;height: 100%;">
-      <navigator style="width: 100%;height: 100%;">
+      <navigator style="width: 100%;height: 100%;"  url="/pages/goods_detail/index?cid={{item.goods_id}}">
         <image src="{{item.goods_big_logo}}" mode="heightFix" style="width: 100%;height: 100%;"></image>
       </navigator>
     </view>
     <view class="desc">
-      <view style="margin:20rpx 20rpx;">{{item.goods_name}}</view>
+      <view>{{item.goods_name}}
+      </view>
       <text class="price">￥{{item.goods_price}}</text>
     </view>
-    
+
   </view>
 </block>
 <block wx:elif="{{tabs[1].isActive}}">1</block>
