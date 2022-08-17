@@ -1,36 +1,37 @@
 <view class="fixBlock">
-  <navigator>
-    <view>123</view>
+  <button open-type="contact">
+    <view class="iconfont icon-kefu"></view>
     <view>联系客服</view>
-  </navigator>
-  <navigator>
-    <view>123</view>
+  </button>
+  <button open-type="share">
+    <view class="iconfont icon-fenxiang"></view>
     <view>分享</view>
+  </button>
+  <navigator url="../cart/index" open-type="switchTab">
+      <view class="iconfont icon-gouwuche"></view>
+      <view>购物车</view>
   </navigator>
-  <navigator>
-    <view>123</view>
-    <view>购物车</view>
-  </navigator>
-  <navigator class="shoppingCar">加入购物车</navigator>
-  <navigator class="buy">立即购买</navigator>
+  <view class="shoppingCar" bindtap="addShoppingCar">加入购物车</view>
+  <view class="buy">立即购买</view>
 </view>
 
 
 <swiper autoplay interval="1000" circular indicator-dots indicator-active-color="grey" class="swiper">
   <swiper-item wx:for="{{swiperList}}" wx:for-item="item" wx:for-index="index" wx:key='pics_id' style="width: 100%;height: 100%;">
-    <navigator class="swiperNavigator">
+    <div class="swiperNavigator" bindtap="priview" data-index="{{index}}" url="">
       <image src="{{item.pics_big}}" mode="heightFix"></image>
-    </navigator>
+    </div>
   </swiper-item>
 </swiper>
 <view class="price">￥{{detailList.goods_price}}</view>
 <view class="desc">
   <text>{{detailList.goods_name}}</text>
   <view>
-    <view class="iconfont icon-shoucang:before"></view>
+    <view class="iconfont icon-shoucang"></view>
     <view>收藏</view>
   </view>
 </view>
-<view>
-{{detailList.goods_introduce}}
+<view class="detail">图文详情</view>
+<view style="margin:0 40rpx">
+  <rich-text nodes="{{detailList.goods_introduce}}"></rich-text>
 </view>

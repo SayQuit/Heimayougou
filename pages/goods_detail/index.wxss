@@ -1,4 +1,7 @@
 @import "../../styles/iconfont.wxss";
+page{
+  padding-bottom: 100rpx;
+}
 .swiperNavigator{
   width: 100%;
   height: 90%;
@@ -28,14 +31,14 @@
 }
 .desc{
   display: flex;
-  color:#999;
+  color:#444;
   margin-left: 10rpx;
  
   /* box-sizing: border-box; */
 }
 .desc>text{
   flex: 5;
-  border-right: 1rpx solid #999;
+  border-right: 1rpx solid;
    padding-right: 70rpx;
    padding-left: 40rpx;
    /* font-size: rpx; */
@@ -56,41 +59,84 @@
 }
 .desc>view>view{
   flex: 1;
+  color: #444;
+  /* border: 1px solid black; */
 }
 
 .fixBlock{
   position: fixed;
   width: 100%;
   height: 100rpx;
-  border: 1px solid;
+  /* border: 1px solid; */
   z-index: 10;
   top: 100%;
   transform: translateY(-100%);
   background-color: white;
   display: flex;
 }
-.fixBlock>navigator{
+.fixBlock>button{
+
+  padding:0;
   flex:1;
   display: flex;
   flex-direction: column;
   text-align: center;
   width: 100%;
   line-height: 100rpx;
+  font-weight: 200;
+  font-size:20rpx;
+}
+.fixBlock>navigator{
+
+  padding:0;
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  line-height: 100rpx;
+  font-weight: 200;
+  font-size:20rpx;
+}
+.fixBlock>button>view{
+  flex: 1;
+  line-height: 50rpx;
+  font-weight: 400;
+  font-size:22rpx;
+  /* font-size:26rpx; */
 }
 .fixBlock>navigator>view{
   flex: 1;
   line-height: 50rpx;
+  font-weight: 400;
   font-size:22rpx;
+  /* font-size:26rpx; */
 }
 .fixBlock>.shoppingCar{
   flex: 2;
   background-color: orange;
   color: white;
   font-weight:800;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
 }
 .fixBlock>.buy{
   flex: 2;
   background-color: #eb4450;
   color: white;
   font-weight:800;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  border-top: 1px solid #ccc;
+}
+
+.detail
+{
+  color: #eb4450;
+  margin: 40rpx;
+  font-weight:800;
+  font-size: 35rpx;
+
 }
