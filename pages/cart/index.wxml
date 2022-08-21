@@ -11,9 +11,14 @@
     </view>
     <view class="settlement-count-freight">包含运费</view>
   </view>
-  <navigator class="settlement-settle">结算</navigator>
+  <navigator class="settlement-settle">结算({{count}})</navigator>
 </view>
-<view class="addAddress">添加收货地址</view>
+<view class="addAddress" bindtap="handleGetAddress" wx:if="{{!address}}">添加收货地址</view>
+<view class="address" bindtap="handleGetAddress" wx:else>
+  <text>收货人:{{address.userName}}</text>
+  <text style="float: right;">{{address.telNumber}}</text>
+  <view>{{address.provinceName+address.cityName+address.countyName+address.detailInfo}}</view>
+</view>
 <view class="cartTitle">购物车</view>
 <checkbox-group>
   <view wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="index" wx:key='cat_id' class="cartGood">

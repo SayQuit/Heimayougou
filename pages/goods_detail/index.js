@@ -48,7 +48,7 @@ Page({
     // console.log(this.data.detailList);
     if(index==-1){
       let shopCar = JSON.parse(JSON.stringify(this.data.detailList));
-      shopCar.isSelect=true;
+      shopCar.isSelect=false;
       shopCar.num=1;
       shoppingcar.push(shopCar);
       wx.setStorageSync('ShoppingCar',shoppingcar)

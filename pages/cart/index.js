@@ -3,10 +3,14 @@ Page({
   data: {
     goodsList: [],
     selectAll: false,
-    priceCount:0
+    priceCount:0,
+    address:'',
+    count:0,
+   
   },
   onShow: function (options) {
     this.getShopCarStorage();
+
   },
   getShopCarStorage: function () {
     var List = wx.getStorageSync('ShoppingCar') || []
@@ -17,24 +21,41 @@ Page({
     }
     this.ChangeSelectAll();
     this.updatePriceCount();
+    this.updateCount();
+  },
+  updateCount:function(){
+    var c=0;
+    for(var i=0;i<this.data.goodsList.length; i++) {
+      if(this.data.goodsList[i].isSelect == true)c++;
+    }
+    this.setData({
+      count:c
+    })
   },
   setShopCarStorage: function () {
     wx.setStorageSync('ShoppingCar', this.data.goodsList)
   },
   updatePriceCount:function(){
-    this.setData({
-      priceCount:0
-    })
+    
+    var price=0
     for (var i = 0; i < this.data.goodsList.length; i++) {
-      var price=this.data.priceCount+this.data.goodsList[i].num*this.data.goodsList[i].goods_price;
+      var addprice=this.data.goodsList[i].num*this.data.goodsList[i].goods_price;
       if (this.data.goodsList[i].isSelect == true) {
-        this.setData({
+        price+=Number(addprice)
+      }
+    }this.setData({
           // selectAll: false
           priceCount:price
         })
-      }
-    }
+  },
+  removeShopItem:function(e){
+    var i = e.currentTarget.dataset.index;
+    this.data.goodsList.removeItem(i);
+    this.ChangeSelectAll();
+    this.updatePriceCount();
+    this.updateCount();
     this.setShopCarStorage();
+    
   },
   ChangeSelectAll: function () {
 
@@ -46,9 +67,12 @@ Page({
         return;
       }
     }
-    this.setData({
-      selectAll: true
-    })
+    if(this.data.goodsList.length!=0){
+      this.setData({
+        selectAll: true
+      })
+    }
+
   },
   handleCheckSelect: function (e) {
     var i = e.currentTarget.dataset.index;
@@ -57,8 +81,11 @@ Page({
     this.setData({
       [f]: boolValue
     })
+    
     this.ChangeSelectAll();
     this.updatePriceCount();
+    this.updateCount();
+    this.setShopCarStorage();
     
 
   },
@@ -73,7 +100,9 @@ Page({
     this.setData({
       [f]: newValue
     })
+    
     this.updatePriceCount();
+    this.setShopCarStorage();
   },
   handleInputValue: function (e) {
     var i = e.currentTarget.dataset.index;
@@ -84,6 +113,8 @@ Page({
       [f]: newValue
     })
     this.updatePriceCount();
+    this.setShopCarStorage();
+    
   },
   handleSelectAll: function (e) {
     var s = !this.data.selectAll;
@@ -96,10 +127,28 @@ Page({
         [f]: s
       })
     }
+    
     this.updatePriceCount();
+    this.updateCount();
+    this.setShopCarStorage();
 
   },
   
-
+  handleGetAddress:function(){
+    // wx.getSetting({
+    //   withSubscriptions: true,
+    // })
+    if(this.data.address==false){
+      wx.chooseAddress({
+        success: (result) => {
+            this.setData({
+              address:result
+            })
+        },
+        fail: (res) => {},
+        complete: (res) => {},
+      })
+    }
+  }
 
 })
