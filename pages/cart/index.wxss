@@ -160,3 +160,8 @@ page{
   text-align: center;
   line-height: 100rpx;
 }
+.empty{
+  margin-top: 50rpx;
+  width: 100%;
+  text-align: center;
+}

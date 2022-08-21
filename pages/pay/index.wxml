@@ -1,2 +1,40 @@
-<!--pages/pay/index.wxml-->
-<text>pages/pay/index.wxml</text>
+<!--pages/cart/index.wxml-->
+<!-- <text>pages/cart/index.wxml</text> -->
+<view class="settlement">
+  <view class="settlement-selectAll"></view>
+  <view class="settlement-count">
+    <view class="settlement-count-allPrice">
+      <text>合计:</text>
+      <text style="color:#eb4450">￥{{price}}</text>
+    </view>
+    <view class="settlement-count-freight">包含运费</view>
+  </view>
+  <view class="settlement-settle" bindtap="handlePay">支付({{count}})</view>
+</view>
+
+<view class="address">
+  <text>收货人:{{address.userName}}</text>
+  <text style="float: right;">{{address.telNumber}}</text>
+  <view>{{address.provinceName+address.cityName+address.countyName+address.detailInfo}}</view>
+</view>
+<view class="cartTitle">购物车</view>
+
+
+<view>
+  <view wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="index" wx:key='cat_id' class="cartGood">
+
+    <image class="cartGood-goodImg" src="{{item.goods_big_logo}}" mode="widthFix"></image>
+    <view class="cartGood-desc">
+      <view class="cartGood-desc-text">{{item.goods_name}}</view>
+      <view class="cartGood-desc-shop">
+        <view class="cartGood-desc-price">￥{{item.goods_price}}</view>
+        <view class="cartGood-desc-goodNum">
+          
+          <view class="cartGood-desc-goodNum-inputNum">×{{item.num}}</view>
+          
+          
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

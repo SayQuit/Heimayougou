@@ -1,1 +1,11 @@
-/* pages/auth/index.wxss */
+.btn{
+  width: 90%;
+  height: 80rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border: 1px solid green;
+  text-align: center;
+  line-height: 45rpx;
+  color: green;
+  font-size: 40rpx;
+}

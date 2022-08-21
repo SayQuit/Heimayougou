@@ -43,9 +43,7 @@ Page({
   addShoppingCar:function(){
     var shoppingcar=wx.getStorageSync('ShoppingCar')||[]
     var index=shoppingcar.findIndex(v=>v.goods_id==this.data.detailList.goods_id)
-    // console.log(index);
-    console.log(shoppingcar);
-    // console.log(this.data.detailList);
+
     if(index==-1){
       let shopCar = JSON.parse(JSON.stringify(this.data.detailList));
       shopCar.isSelect=false;

@@ -2,7 +2,7 @@
 <!-- <text>pages/cart/index.wxml</text> -->
 <view class="settlement">
   <view class="settlement-selectAll">
-    <checkbox  checked="{{selectAll}}" bindtap="handleSelectAll"></checkbox>
+    <checkbox checked="{{selectAll}}" bindtap="handleSelectAll"></checkbox>
   </view>
   <view class="settlement-count">
     <view class="settlement-count-allPrice">
@@ -11,7 +11,7 @@
     </view>
     <view class="settlement-count-freight">包含运费</view>
   </view>
-  <navigator class="settlement-settle">结算({{count}})</navigator>
+  <view class="settlement-settle" bindtap="handlePay">结算({{count}})</view>
 </view>
 <view class="addAddress" bindtap="handleGetAddress" wx:if="{{!address}}">添加收货地址</view>
 <view class="address" bindtap="handleGetAddress" wx:else>
@@ -20,7 +20,9 @@
   <view>{{address.provinceName+address.cityName+address.countyName+address.detailInfo}}</view>
 </view>
 <view class="cartTitle">购物车</view>
-<checkbox-group>
+
+
+<checkbox-group wx:if="{{goodsList.length!==0}}">
   <view wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="index" wx:key='cat_id' class="cartGood">
     <view class="cartGood-selectBtn">
       <checkbox checked="{{item.isSelect}}" bindtap="handleCheckSelect" data-index="{{index}}"></checkbox>
@@ -32,11 +34,11 @@
         <view class="cartGood-desc-price">￥{{item.goods_price}}</view>
         <view class="cartGood-desc-goodNum">
           <view class="cartGood-desc-goodNum-btn" bindtap="handleAdd" data-value="{{-1}} " data-index="{{index}}">-</view>
-          <input type="text" class="cartGood-desc-goodNum-inputNum" value="{{item.num}}" bindinput="handleInputValue" 
-          data-index="{{index}}" />
+          <input type="text" class="cartGood-desc-goodNum-inputNum" value="{{item.num}}" bindinput="handleInputValue" data-index="{{index}}" />
           <view class="cartGood-desc-goodNum-btn" bindtap="handleAdd" data-value="{{1}}" data-index="{{index}}">+</view>
         </view>
       </view>
     </view>
   </view>
 </checkbox-group>
+<view wx:else class="empty">还没有选购商品</view>

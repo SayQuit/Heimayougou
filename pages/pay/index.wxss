@@ -1,1 +1,149 @@
-/* pages/pay/index.wxss */
+page{
+  margin-bottom: 100rpx;
+}
+
+.address{
+
+  box-sizing: border-box;
+  padding:40rpx;
+  width: 100%;
+  height: 160rpx;
+  font-size: 25rpx;
+
+}
+.address view{
+  margin-top: 20rpx;
+}
+
+.cartTitle {
+  width: 100%;
+  padding-left: 40rpx;
+  font-size: 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top: 1px solid #eb4450;
+  border-bottom: 1px solid #eb4450;
+  line-height: 100rpx;
+}
+
+.cartGood {
+  height: 220rpx;
+  display: flex;
+
+}
+
+.cartGood-selectBtn {
+  flex: 1;
+  position: relative;
+}
+
+.cartGood-selectBtn checkbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.cartGood-goodImg {
+  flex: 2;
+}
+
+.cartGood-desc {
+  flex: 4;
+  margin-top: 30rpx;
+  margin-right: 30rpx;
+  margin-left: 30rpx;
+
+}
+
+.cartGood-desc-text {
+  width: 100%;
+  height: 40%;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cartGood-desc-shop {
+  margin-top: 30rpx;
+  width: 100%;
+  height: 40%;
+}
+
+.cartGood-desc-price {
+  height: 100%;
+  width: 40%;
+  display: inline-block;
+  vertical-align: bottom;
+  color: #eb4450;
+  font-size: 32rpx;
+}
+
+.cartGood-desc-goodNum {
+  height: 100%;
+  width: 60%;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.cartGood-desc-goodNum-btn{
+  display: inline-block;
+  font-size: 35rpx;
+  border: 1px solid;
+  width: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  color: #999;
+  vertical-align: top;
+}
+.cartGood-desc-goodNum-inputNum{
+  width: 100rpx;
+  float: right;
+  vertical-align: top;
+}
+.settlement{
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  top: 100%;
+  transform: translateY(-100%);
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  z-index: 100;
+
+}
+.settlement-selectAll{
+  flex: 1;
+  position: relative;
+}
+.settlement-selectAll checkbox{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.settlement-count{
+  flex: 4;
+  text-align: right;
+  padding-right: 30rpx;
+}
+.settlement-count-allPrice{
+  width: 100%;
+  height: 50%;
+  font-size: 33rpx;
+  
+}
+.settlement-count-freight{
+  width: 100%;
+  height: 50%;
+}
+.settlement-settle{
+  flex: 2;
+  color: white;
+  background-color: #eb4450;
+  font-size: 35rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
