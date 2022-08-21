@@ -1,11 +1,13 @@
 <!--pages/cart/index.wxml-->
 <!-- <text>pages/cart/index.wxml</text> -->
 <view class="settlement">
-  <view class="settlement-selectAll"><checkbox></checkbox></view>
+  <view class="settlement-selectAll">
+    <checkbox  checked="{{selectAll}}" bindtap="handleSelectAll"></checkbox>
+  </view>
   <view class="settlement-count">
     <view class="settlement-count-allPrice">
       <text>合计:</text>
-      <text style="color:#eb4450">￥</text>
+      <text style="color:#eb4450">￥{{priceCount}}</text>
     </view>
     <view class="settlement-count-freight">包含运费</view>
   </view>
@@ -16,7 +18,7 @@
 <checkbox-group>
   <view wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="index" wx:key='cat_id' class="cartGood">
     <view class="cartGood-selectBtn">
-      <checkbox></checkbox>
+      <checkbox checked="{{item.isSelect}}" bindtap="handleCheckSelect" data-index="{{index}}"></checkbox>
     </view>
     <image class="cartGood-goodImg" src="{{item.goods_big_logo}}" mode="widthFix"></image>
     <view class="cartGood-desc">
@@ -24,9 +26,10 @@
       <view class="cartGood-desc-shop">
         <view class="cartGood-desc-price">￥{{item.goods_price}}</view>
         <view class="cartGood-desc-goodNum">
-          <view class="cartGood-desc-goodNum-btn">-</view>
-          <input type="text" class="cartGood-desc-goodNum-inputNum"/>
-          <view class="cartGood-desc-goodNum-btn">+</view>
+          <view class="cartGood-desc-goodNum-btn" bindtap="handleAdd" data-value="{{-1}} " data-index="{{index}}">-</view>
+          <input type="text" class="cartGood-desc-goodNum-inputNum" value="{{item.num}}" bindinput="handleInputValue" 
+          data-index="{{index}}" />
+          <view class="cartGood-desc-goodNum-btn" bindtap="handleAdd" data-value="{{1}}" data-index="{{index}}">+</view>
         </view>
       </view>
     </view>

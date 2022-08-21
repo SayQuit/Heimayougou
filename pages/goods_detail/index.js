@@ -47,7 +47,10 @@ Page({
     console.log(shoppingcar);
     // console.log(this.data.detailList);
     if(index==-1){
-      shoppingcar.push(this.data.detailList);
+      let shopCar = JSON.parse(JSON.stringify(this.data.detailList));
+      shopCar.isSelect=true;
+      shopCar.num=1;
+      shoppingcar.push(shopCar);
       wx.setStorageSync('ShoppingCar',shoppingcar)
       wx.showToast({
         title: '加入成功',
