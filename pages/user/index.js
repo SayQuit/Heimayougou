@@ -6,22 +6,26 @@ Page({
     nav: [{
         id: 0,
         name: '收藏的店铺',
-        num: 0
+        num: 0,
+        url:'../collect/index'
       },
       {
         id: 1,
         name: '收藏的商品',
-        num: 0
+        num: 0,
+        url:'../collect/index'
       },
       {
         id: 2,
         name: '关注的商品',
-        num: 0
+        num: 0,
+        url:'../collect/index'
       },
       {
         id: 3,
         name: '我的足迹',
-        num: 0
+        num: 0,
+        url:'../collect/index'
       }
     ],
     order: [{

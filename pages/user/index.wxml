@@ -11,10 +11,10 @@
 
     <view class="bottom-list-nav">
       <block wx:for="{{nav}}" wx:for-item="item" wx:for-index="index" wx:key='id'>
-        <view class="bottom-list-nav-navItem">
+        <navigator class="bottom-list-nav-navItem" url="{{item.url}}">
           <view class="bottom-list-nav-navItem-num">{{item.num}}</view>
           <view class="bottom-list-nav-navItem-desc">{{item.name}}</view>
-        </view>
+        </navigator>
       </block>  
     </view>
 

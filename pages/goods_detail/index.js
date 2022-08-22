@@ -28,6 +28,9 @@ Page({
 
     if(this.data.isCollection){
       collection.push(this.data.detailList);
+      wx.showToast({
+        title: '收藏成功',
+      })
     }
     else{
       for(var i=0;i<collection.length;i++){
@@ -35,6 +38,9 @@ Page({
             collection.splice(i,1);
         }
       }
+      wx.showToast({
+        title: '取消成功',
+      })
     }
     wx.setStorageSync('collection', collection)
   },
