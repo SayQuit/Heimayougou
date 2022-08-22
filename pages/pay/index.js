@@ -42,6 +42,16 @@ Page({
     }
     
   },
+  removeItem:function(){
+    var car=wx.getStorageSync('ShoppingCar');
+    for(var i=0;i<car.length;i++){
+      if(car[i].isSelect==true){
+        car.splice(i,1);
+        i--;
+      }
+    }
+    wx.setStorageSync('ShoppingCar', car)
+  },
   async handlePay(){
     const token=wx.getStorageSync('token');
     if(!token){
@@ -79,7 +89,13 @@ Page({
           // 没有appid没办法弹出，到这里结束
           console.log(res);
         }
+        
       })
+      this.removeItem();
+      wx.switchTab({
+        url: '../cart/index',
+      })
+
       // wx.request({
       //   url: 'https://api-hmugo-web.itheima.net/api/public/v1/my/orders/create?order_price='+order_price+
       //   '&consignee_addr='+consignee_addr+'&goods='+goods,
@@ -90,6 +106,7 @@ Page({
       //   }
 
       // })
+      
 
     }
   },

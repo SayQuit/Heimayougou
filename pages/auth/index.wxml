@@ -1,1 +1,2 @@
 <button class="btn" open-type="getUserInfo" bindgetuserinfo="handlegetuserinfo">授权</button>
+

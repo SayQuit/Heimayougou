@@ -6,6 +6,7 @@ Page({
     priceCount: 0,
     address: '',
     count: 0,
+    anySelect:false
 
   },
   onShow: function (options) {
@@ -62,6 +63,7 @@ Page({
   },
   ChangeSelectAll: function () {
 
+    
     for (var i = 0; i < this.data.goodsList.length; i++) {
       if (this.data.goodsList[i].isSelect == false) {
         this.setData({
@@ -75,6 +77,12 @@ Page({
         selectAll: true
       })
     }
+    else if (this.data.goodsList.length == 0) {
+      this.setData({
+        selectAll: false
+      })
+    }
+    
 
   },
   handleCheckSelect: function (e) {
@@ -165,7 +173,22 @@ Page({
       })
     }
   },
+  isAnySelect:function(){
+    for(var i=0;i<this.data.goodsList.length;i++){
+      if(this.data.goodsList[i].isSelect==true){
+        console.log(i);
+        this.setData({
+          anySelect:true
+        })
+        return;
+      }
+    }
+    this.setData({
+      anySelect:false
+    })
+  },
   handlePay:function(){
+    this.isAnySelect();
     if(!this.data.address){
       wx.showToast({
         title: '未添加收货地址',
@@ -173,7 +196,7 @@ Page({
       })
       return;
     }
-    else if(this.data.goodsList.length==0){
+    if(this.data.anySelect==false){
       wx.showToast({
         title: '未添加商品',
         icon:'none'

@@ -1,2 +1,8 @@
-<!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view wx:if="{{!isLogin}}" class="login"> 
+  <navigator url="../login/index" class="login-button">登录</navigator>
+</view>
+<view class="userbackground" wx:else>
+  <image src="{{userInfo.userInfo.avatarUrl}}" class="userbackground-img"></image>
+  <view class="userbackground-profilepicture"><image src="{{userInfo.userInfo.avatarUrl}}"></image></view>
+  <view class="userbackground-name">SayQuit</view>
+</view>
