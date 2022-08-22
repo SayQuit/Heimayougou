@@ -6,3 +6,35 @@
   <view class="userbackground-profilepicture"><image src="{{userInfo.userInfo.avatarUrl}}"></image></view>
   <view class="userbackground-name">SayQuit</view>
 </view>
+<view class="bottom">
+  <view class="bottom-list">
+
+    <view class="bottom-list-nav">
+      <block wx:for="{{nav}}" wx:for-item="item" wx:for-index="index" wx:key='id'>
+        <view class="bottom-list-nav-navItem">
+          <view class="bottom-list-nav-navItem-num">{{item.num}}</view>
+          <view class="bottom-list-nav-navItem-desc">{{item.name}}</view>
+        </view>
+      </block>  
+    </view>
+
+    <view class="bottom-list-order">
+      <view class="bottom-list-order-myorder">我的订单</view>
+      <view class="bottom-list-order-ordernav">
+        <block wx:for="{{order}}" wx:for-item="item" wx:for-index="index" wx:key='id'>
+          <view class="bottom-list-order-ordernav-item">
+            <view class="bottom-list-order-ordernav-item-image"></view>
+            <view class="bottom-list-order-ordernav-item-name">{{item.name}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="bottom-list-addressManage bottom-list-item">收货地址管理</view>
+    <view class="bottom-list-contactCustomer bottom-list-item">联系客服</view>
+    <view class="bottom-list-opinion bottom-list-item">意见反馈</view>
+    <view class="bottom-list-aboutUs bottom-list-item">关于我们</view>
+    <view class="bottom-list-recommend bottom-list-item">把应用推荐给其他人</view>
+
+  </view>
+</view>
