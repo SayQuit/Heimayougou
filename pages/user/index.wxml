@@ -22,16 +22,21 @@
       <view class="bottom-list-order-myorder">我的订单</view>
       <view class="bottom-list-order-ordernav">
         <block wx:for="{{order}}" wx:for-item="item" wx:for-index="index" wx:key='id'>
-          <view class="bottom-list-order-ordernav-item">
-            <view class="bottom-list-order-ordernav-item-image"></view>
+          <navigator class="bottom-list-order-ordernav-item" url="../order/index?type={{index}}">
+            <view class="bottom-list-order-ordernav-item-image">
+              <view class="iconfont {{item.img}}"></view>
+            </view>
             <view class="bottom-list-order-ordernav-item-name">{{item.name}}</view>
-          </view>
+          </navigator>
         </block>
       </view>
     </view>
 
     <view class="bottom-list-addressManage bottom-list-item">收货地址管理</view>
-    <view class="bottom-list-contactCustomer bottom-list-item">联系客服</view>
+    <view class="bottom-list-contactCustomer bottom-list-item">
+      <view class="bottom-list-contactCustomer-left">联系客服</view>
+      <view class="bottom-list-contactCustomer-right">400-618-4000</view>
+    </view>
     <view class="bottom-list-opinion bottom-list-item">意见反馈</view>
     <view class="bottom-list-aboutUs bottom-list-item">关于我们</view>
     <view class="bottom-list-recommend bottom-list-item">把应用推荐给其他人</view>

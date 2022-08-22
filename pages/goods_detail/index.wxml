@@ -27,7 +27,7 @@
 <view class="desc">
   <text>{{detailList.goods_name}}</text>
   <view>
-    <view class="iconfont icon-shoucang"></view>
+    <view class="iconfont2 {{isCollection?'icon-shoucang1':'icon-shoucang'}}" bindtap="handleCollect"></view>
     <view>收藏</view>
   </view>
 </view>

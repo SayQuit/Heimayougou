@@ -15,9 +15,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-shoucang:before {
+/* .icon-shoucang:before {
   content: "\e602";
-}
+} */
 
 .icon-tubiao114:before {
   content: "\e635";

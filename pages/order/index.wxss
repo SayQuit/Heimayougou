@@ -1,1 +1,31 @@
-/* pages/order/index.wxss */
+.orderList{
+  padding: 30rpx 20rpx;
+  color: #777;
+  height: 120rpx;
+  border-bottom: 1px solid #DDD;
+}
+.orderList-item{
+  height: 30%;
+  margin-bottom: 1%;
+}
+.orderList-item-numdesc{
+  float: left;
+}
+.orderList-item-num{
+  float: right;
+}
+.orderList-item-pricedesc{
+  float: left;
+}
+.orderList-item-price{
+  float: right;
+  color:#eb4450;
+  font-size: 32rpx;
+}
+.orderList-item-datedesc{
+  float: left;
+}
+.orderList-item-date{
+  float: right;
+  color: black;
+}

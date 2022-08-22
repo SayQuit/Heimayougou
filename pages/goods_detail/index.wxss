@@ -59,8 +59,10 @@ page{
 }
 .desc>view>view{
   flex: 1;
-  color: #444;
-  /* border: 1px solid black; */
+  /* color: #444; */
+  /* background-color: #FFF;
+  color: #FFF;
+  border: 1px solid black; */
 }
 
 .fixBlock{

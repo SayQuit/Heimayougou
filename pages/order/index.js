@@ -1,66 +1,128 @@
-// pages/order/index.js
+import {
+  request
+} from "../../request/request";
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+
   data: {
+    OrderList: [],
+    pageType: 0,
+    tabs: [{
+        name: '全部',
+        isActive: false,
+        id: 0
+      },
+      {
+        name: '待付款',
+        isActive: false,
+        id: 1
+      },
+      {
+        name: '待发货',
+        isActive: false,
+        id: 2
+      },
+      {
+        name: '退款/退货',
+        isActive: false,
+        id: 3
+      },
+
+    ]
+  },
+  handleclicktabs: function (e) {
+    for (var i = 0; i < this.data.tabs.length; i++) {
+      var f = 'tabs[' + i + '].isActive'
+      this.setData({
+        [f]: false
+      })
+    }
+    this.setisActive(e.detail);
+    this.setData({
+      pageType: e.detail
+    })
+    this.getOrderList();
+  },
+  setisActive(index) {
+
+    this.setData({
+      pageType: index
+    })
+    var f = 'tabs[' + index + '].isActive'
+    this.setData({
+      [f]: true
+    })
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setisActive(options.type);
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
 
+    this.getOrderList();
+    // let page=getCurrentPages();
+    // console.log(page[page.length-1].options);
+    // this.setData({
+    //   pageType:page[page.length-1].options
+    // })
   },
+  async getOrderList() {
+    const token = wx.getStorageSync('token');
+    if (!token) {
+      wx.navigateTo({
+        url: '../auth/index',
+      })
+    } else { 
+      // var link='https://api-hmugo-web.itheima.net/api/public/v1/my/orders/all?type=2';
+      // console.log(link);
+      // wx.request({
+      //   url: link,
+      //   success:(res)=>{
+      //     console.log(res);
+      //   }
+      // })
+      // console.log(List);
+      // console.log(order_List);
+      const List = await request({
+        url: "/my/orders/all",
+        method: 'get',
+        data: this.data.pageType
+      })
+      var order_List = List.orders
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+      this.setData({
+        OrderList: order_List
+      })
+      for (var i = 0; i < this.data.OrderList.length; i++) {
+        var f = 'OrderList[' + i + '].update_time'
+        var time=this.formatTime(this.data.OrderList[i].update_time,'Y/M/D h:m:s')
+        this.setData({
+          [f]: time
+        })
+      }
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  formatTime:function(number, format) {
+    var formateArr = ['Y', 'M', 'D', 'h', 'm', 's'];
+    var returnArr = [];
+    var date = new Date(number * 1000);
+    returnArr.push(date.getFullYear());
+    returnArr.push(this.formatNumber(date.getMonth() + 1));
+    returnArr.push(this.formatNumber(date.getDate()));
+    returnArr.push(this.formatNumber(date.getHours()));
+    returnArr.push(this.formatNumber(date.getMinutes()));
+    returnArr.push(this.formatNumber(date.getSeconds()));
+    for (var i in returnArr) {
+      format = format.replace(formateArr[i], returnArr[i]);
+    }
+    return format;
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  formatNumber:function (n){
+    n = n.toString()
+    return n[1] ? n : '0' + n
   }
+  //导出
+
+
+
 })

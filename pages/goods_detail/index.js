@@ -7,7 +7,8 @@ Page({
   data: {
     detailList:[],
     id:'',
-    swiperList:[]
+    swiperList:[],
+    isCollection:false
   },
 
   priview:function(e){
@@ -17,6 +18,25 @@ Page({
     wx.previewImage({
       urls: [u],
     })
+  },
+  handleCollect:function(){
+    var c=!this.data.isCollection;
+    this.setData({
+      isCollection:c
+    })
+    var collection=wx.getStorageSync('collection')||[]
+
+    if(this.data.isCollection){
+      collection.push(this.data.detailList);
+    }
+    else{
+      for(var i=0;i<collection.length;i++){
+        if(collection[i].goods_id==this.data.detailList.goods_id){
+            collection.splice(i,1);
+        }
+      }
+    }
+    wx.setStorageSync('collection', collection)
   },
 
   getdetailList:function(){
@@ -30,15 +50,30 @@ Page({
           detailList:result.data.message,
           swiperList:result.data.message.pics
         })
+        this.setIsCollection();
       }
     })
+  },
+  async setIsCollection(){
+    var collection=wx.getStorageSync('collection')||[]
+    for(var i=0;i<collection.length;i++){
+      // console.log(collection[i].goods_id);
+      // console.log(this.data.detailList.goods_id);
+
+      if(collection[i].goods_id==this.data.detailList.goods_id){
+        this.setData({
+          isCollection:true
+        })
+      }
+    }
   },
   onLoad: function (options) {
     // console.log(options.cid);
     this.setData({
       id:options.cid
     }),
-    this.getdetailList()
+    this.getdetailList();
+    // this.setIsCollection();
   },
   addShoppingCar:function(){
     var shoppingcar=wx.getStorageSync('ShoppingCar')||[]

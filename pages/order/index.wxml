@@ -1,2 +1,21 @@
-<!--pages/order/index.wxml-->
-<text>pages/order/index.wxml</text>
+<Tabs tabs="{{tabs}}" bindclicktabs="handleclicktabs"></Tabs>
+<!-- <block wx:if="{{tabs[0].isActive}}">0</block>
+<block wx:if="{{tabs[1].isActive}}">1</block>
+<block wx:if="{{tabs[2].isActive}}">2</block>
+<block wx:if="{{tabs[3].isActive}}">3</block> -->
+<block wx:for="{{OrderList}}" wx:for-item="item" wx:for-index="index" wx:key='order_id'>
+  <view class="orderList">
+    <view class="orderList-item">
+      <text class="orderList-item-numdesc">订单编号</text>
+      <text class="orderList-item-num">{{item.order_number}}</text>
+    </view>
+    <view class="orderList-item">
+      <text class="orderList-item-pricedesc">订单价格</text>
+      <text class="orderList-item-price">￥{{item.order_price}}</text>
+    </view>
+    <view class="orderList-item">
+      <text class="orderList-item-datedesc">订单日期</text>
+      <text class="orderList-item-date">{{item.update_time}}</text>
+    </view>
+  </view>
+</block>
