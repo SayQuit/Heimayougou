@@ -18,7 +18,8 @@ Page({
 
     ],
     uploadImg: [],
-    question:''
+    question: '',
+    imgUrlAfterCommit: []
   },
   handleAddImg: function () {
     wx.chooseImage({
@@ -39,28 +40,82 @@ Page({
 
     })
   },
-  handleDelete:function(e){
-    for(var i=0;i<this.data.uploadImg.length;i++){
-      if(this.data.uploadImg[i]==e.detail){
-        this.data.uploadImg.splice(i,1);
-        var up=this.data.uploadImg;
+  handleDelete: function (e) {
+    for (var i = 0; i < this.data.uploadImg.length; i++) {
+      if (this.data.uploadImg[i] == e.detail) {
+        this.data.uploadImg.splice(i, 1);
+        var up = this.data.uploadImg;
         this.setData({
-          uploadImg:up
+          uploadImg: up
         })
       }
     }
   },
-  handleCommit:function(){
-    this.setData({
-      question:'',
-      uploadImg:[]
+  handleCommit: function () {
+
+    var q = this.data.question;
+    var u = this.data.uploadImg;
+
+    if (!q.trim()) {
+      wx.showToast({
+        title: '文本不能为空',
+        icon: "none",
+
+      })
+      return;
+    }
+
+    wx.showLoading({
+
+      title: '正在上传中',
     })
+
+    if(this.data.uploadImg.length==0){
+      console.log('只是提交了文本');
+      wx.hideLoading({
+        success: (res) => {},
+      })
+      this.setData({
+        question: '',
+        uploadImg: []
+      })
+    }
+    for (var i = 0; i < this.data.uploadImg.length; i++) {
+      wx.uploadFile({
+        url: 'https://imgchr.com/i/MjaXxU',
+        filePath: this.data.uploadImg[i],
+        name: 'imgfile',
+        formData: {},
+        success: (res) => {
+          console.log(res);
+          var list = this.data.imgUrlAfterCommit;
+          list.push(res.data);
+          this.setData({
+            imgUrlAfterCommit: list
+          })
+          if (this.data.imgUrlAfterCommit.length == this.data.uploadImg.length) {
+            
+            this.setData({
+              question: '',
+              uploadImg: []
+            })
+            console.log('传到外网,提交后台');
+            wx.hideLoading({
+              success: (res) => {},
+            })
+          }
+
+        }
+      })
+    }
+
+
+
   },
-  handleInput:function(e){
+  handleInput: function (e) {
     this.setData({
-      question:e.detail.value
+      question: e.detail.value
     })
-    console.log(this.data.question);
   },
   handleclicktabs: function (e) {
     // console.log(this.data.tabs.length);
