@@ -1,0 +1,15 @@
+image{
+  width: 80rpx;
+  height: 80rpx;
+}
+.upimg{
+  position: relative;
+}
+.clear{
+  position: absolute;
+  /* left: -1rpx; */
+  left: 50rpx;
+  top: -30rpx;
+  width: 20rpx;
+  height: 20rpx;
+}

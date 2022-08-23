@@ -1,2 +1,23 @@
-<!--pages/feedback/index.wxml-->
-<text>pages/feedback/index.wxml</text>
+<Tabs tabs="{{tabs}}" bindclicktabs="handleclicktabs"></Tabs>
+<block wx:if="{{tabs[0].isActive}}">
+  <view class="question">
+    <view class="question-desc">问题的种类</view>
+    <view class="question-nav">
+      <view class="question-nav-item">功能建议</view>
+      <view class="question-nav-item">购买遇到问题</view>
+      <view class="question-nav-item">性能问题</view>
+      <view class="question-nav-item">其他</view>
+    </view>
+    <textarea class="question-input" placeholder="请描述一下您的问题" bindinput="handleInput" value="{{question}}"></textarea>
+    <view class="question-add">
+      <view class="question-add-addimg" bindtap="handleAddImg">+</view>
+      <block wx:for="{{uploadImg}}" wx:for-item="item" wx:for-index="index" wx:key='*this'>
+        <upimg class="question-add-addimg-uploadimg" imgUrl="{{item}}" bindclickDelete="handleDelete"></upimg>
+      </block>
+    </view>
+    <view class="question-commit" bindtap="handleCommit"><icon color="white" type="success_no_circle"></icon> 提交</view>
+  </view>
+  
+
+</block>
+<block wx:elif="{{tabs[1].isActive}}">1</block>

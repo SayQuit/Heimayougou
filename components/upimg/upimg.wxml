@@ -1,0 +1,4 @@
+<view class="upimg">
+<image src="{{imgUrl}}"></image>
+<icon type="clear" class="clear" color="red" bindtap="handleDelete"></icon>
+</view>

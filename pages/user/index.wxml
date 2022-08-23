@@ -32,14 +32,14 @@
       </view>
     </view>
 
-    <view class="bottom-list-addressManage bottom-list-item">收货地址管理</view>
+    <navigator class="bottom-list-addressManage bottom-list-item">收货地址管理</navigator>
     <view class="bottom-list-contactCustomer bottom-list-item">
-      <view class="bottom-list-contactCustomer-left">联系客服</view>
-      <view class="bottom-list-contactCustomer-right">400-618-4000</view>
+      <navigator class="bottom-list-contactCustomer-left">联系客服</navigator>
+      <navigator class="bottom-list-contactCustomer-right">400-618-4000</navigator>
     </view>
-    <view class="bottom-list-opinion bottom-list-item">意见反馈</view>
-    <view class="bottom-list-aboutUs bottom-list-item">关于我们</view>
-    <view class="bottom-list-recommend bottom-list-item">把应用推荐给其他人</view>
+    <navigator class="bottom-list-opinion bottom-list-item" url="../feedback/index">意见反馈</navigator>
+    <navigator class="bottom-list-aboutUs bottom-list-item">关于我们</navigator>
+    <navigator class="bottom-list-recommend bottom-list-item">把应用推荐给其他人</navigator>
 
   </view>
 </view>
