@@ -1,2 +1,9 @@
-<!--pages/search/index.wxml-->
-<text>pages/search/index.wxml</text>
+<view class="top">
+  <input type="text" class="inputsearch {{isfocus?'':'longWidth'}}" bindinput="handleInput" value="{{searchvalue}}"/>
+  <view class="cancel" bindtap="handleCancel" hidden="{{!isfocus}}">取消</view>
+</view>
+<block wx:for="{{searchList}}" wx:for-item="item" wx:for-index="index" wx:key='goods_id'>
+  <navigator class="item" url="../goods_detail/index?cid={{item.goods_id}}">
+    {{item.goods_name}}
+  </navigator>
+</block>

@@ -73,16 +73,7 @@ Page({
         url: '../auth/index',
       })
     } else { 
-      // var link='https://api-hmugo-web.itheima.net/api/public/v1/my/orders/all?type=2';
-      // console.log(link);
-      // wx.request({
-      //   url: link,
-      //   success:(res)=>{
-      //     console.log(res);
-      //   }
-      // })
-      // console.log(List);
-      // console.log(order_List);
+
       const List = await request({
         url: "/my/orders/all",
         method: 'get',

@@ -1,66 +1,88 @@
 // pages/collect/index.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+
   data: {
+    collectList:[],
+    tabs: [{
+        name: '商品收藏',
+        isActive: true,
+        id: 0
+      },
+      {
+        name: '品牌收藏',
+        isActive: false,
+        id: 1
+      },
+      {
+        name: '店铺收藏',
+        isActive: false,
+        id: 2
+      },
+      {
+        name: '浏览足迹',
+        isActive: false,
+        id: 3
+      },
+
+    ],
+    goodCollectTabs: [{
+        name: '全部',
+        isActive: true,
+        id: 0
+      },
+      {
+        name: '正在热卖',
+        isActive: false,
+        id: 1
+      }, {
+        name: '即将上线',
+        isActive: false,
+        id: 2
+      }
+
+    ]
+  },
+  handleclicktabs: function (e) {
+    for (var i = 0; i < this.data.tabs.length; i++) {
+      var f = 'tabs[' + i + '].isActive'
+      this.setData({
+        [f]: false
+      })
+    }
+    this.setisActive(e.detail);
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  setisActive(index) {
+
+    var f = 'tabs[' + index + '].isActive'
+    this.setData({
+      [f]: true
+    })
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  handleChangeGoodCollectTabs: function (e) {
+    for (var i = 0; i < this.data.goodCollectTabs.length; i++) {
+      var f = 'goodCollectTabs[' + i + '].isActive'
+      this.setData({
+        [f]: false
+      })
+    }
+    var f = 'goodCollectTabs[' + e.currentTarget.dataset.index + '].isActive'
+    this.setData({
+      [f]: true
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
+
   onShow: function () {
-
+    var List=wx.getStorageSync('collection')||[];
+    this.setData({
+      collectList:List
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
